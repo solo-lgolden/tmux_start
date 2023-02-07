@@ -8,6 +8,7 @@ void main(List<String> arguments) async {
   await createAndInstallEmulator();
   await launchAppium();
   await runTests();
+  Process.run('exit', ['0']);
 }
 
 Future<void> launchAppium() async {
@@ -35,4 +36,5 @@ Future<void> createAndInstallEmulator()async{
 Future<void> runTests()async{
   print('Running tests');
   await Process.run('robot', ["solo_appbeta_e2e.robot"]);
+  await Process.run('pkill', ['-9', '-f', 'appium']);
 }
