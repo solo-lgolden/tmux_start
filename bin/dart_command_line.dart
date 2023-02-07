@@ -27,7 +27,7 @@ Future<void> installDependencies()async{
 
 Future<void> createAndInstallEmulator()async{
   print('Installing Emulator');
-  await Process.run("android", ["create avd", "-n my_avd", '-t 29']);
+  await Process.run("android", ["create avd", "-n my_avd"]);
   await Process.run("emulator", ["-avd my_avd"]);
   await Process.run("adb", ["install ${environmentVariables['AWS_APK_PATH']}"]);
 }
